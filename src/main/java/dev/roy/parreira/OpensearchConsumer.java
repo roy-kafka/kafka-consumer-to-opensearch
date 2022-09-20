@@ -142,7 +142,7 @@ public class OpensearchConsumer {
       KafkaConsumer<String, String> consumer
   ) throws IOException, InterruptedException {
 
-    while (true) {
+    while (true) { // This is only for studying, NOT PRODUCTION CODE
       ConsumerRecords<String, String> consumerRecords = consumer.poll(Duration.ofMillis(3000));
       log.info("Received " + consumerRecords.count() + " record(s)");
 
@@ -165,7 +165,7 @@ public class OpensearchConsumer {
         BulkResponse bulkResponse = openSearchClient.bulk(bulkRequest, RequestOptions.DEFAULT);
         log.info("Inserted " + bulkResponse.getItems().length + " record(s).");
 
-        Thread.sleep(1000);
+        Thread.sleep(1000); // This is only for studying, NOT PRODUCTION CODE
 
         consumer.commitSync();
         log.info("Offsets have been committed!");
